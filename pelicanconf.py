@@ -6,7 +6,7 @@ PATH = "content"
 TIMEZONE = "America/New_York"
 DEFAULT_LANG = "en"
 
-THEME = "themes/fmrif-2026"
+THEME = "themes/fmrif"
 STATIC_PATHS = ["images", "assets", "pdf"]
 
 PAGE_PATHS = ["pages"]
