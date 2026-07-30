@@ -28,6 +28,7 @@ FMRIF_NAV = [
     ("Facilities", "/FMRIF_scanners/"),
     ("Staff", "/Staff/"),
     ("Summer Course", "/SummerCourse/"),
+    ("Recent Publications", "/recent-publications/"),
     ("Data Download", "https://fmrif-xnat.nimh.nih.gov/"),
     ("Scanner Schedules", "https://oxygen.nimh.nih.gov/internal/schedule/"),
     (
