@@ -4,7 +4,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = "https://fmrif.nimh.nih.gov"
+SITEURL = os.environ.get("SITEURL", "https://fmrif.nimh.nih.gov")
 RELATIVE_URLS = False
 DELETE_OUTPUT_DIRECTORY = True
 
