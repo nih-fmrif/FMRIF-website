@@ -1,11 +1,10 @@
-CMN_PELICAN := /Users/molfesepj/Documents/Programming/cmn-website-2026/.venv/bin/pelican
+LOCAL_PELICAN := $(CURDIR)/.venv/bin/pelican
+MNE_PELICAN := /Users/molfesepj/micromamba/envs/mne/bin/pelican
 
-ifeq ($(shell command -v pelican 2>/dev/null),)
-ifneq ($(wildcard $(CMN_PELICAN)),)
-PELICAN ?= $(CMN_PELICAN)
-else
-PELICAN ?= pelican
-endif
+ifneq ($(wildcard $(LOCAL_PELICAN)),)
+PELICAN ?= $(LOCAL_PELICAN)
+else ifneq ($(wildcard $(MNE_PELICAN)),)
+PELICAN ?= $(MNE_PELICAN)
 else
 PELICAN ?= pelican
 endif

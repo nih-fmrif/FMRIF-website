@@ -35,12 +35,15 @@
 <script>
   document.querySelectorAll('[data-publication-ic]').forEach((button) => {
     button.addEventListener('click', () => {
-      const filter = button.dataset.publicationIc;
+      const filter = button.dataset.publicationIc.trim().toLowerCase();
       document.querySelectorAll('[data-publication-ic]').forEach((tab) => {
-        tab.classList.toggle('is-active', tab === button);
+        const isActive = tab === button;
+        tab.classList.toggle('is-active', isActive);
+        tab.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
       document.querySelectorAll('[data-publication-card-ic]').forEach((card) => {
-        card.hidden = filter !== 'all' && card.dataset.publicationCardIc !== filter;
+        const cardIc = card.dataset.publicationCardIc.trim().toLowerCase();
+        card.hidden = filter !== 'all' && cardIc !== filter;
       });
     });
   });
