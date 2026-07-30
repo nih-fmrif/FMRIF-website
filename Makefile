@@ -22,7 +22,7 @@ PUBLISHCONF := $(BASEDIR)/publishconf.py
 help:
 	@echo "make build    Build the development site"
 	@echo "make serve    Build, watch, and serve at http://127.0.0.1:8000"
-	@echo "make publish  Build with publishconf.py"
+	@echo "make publish  Build production site for https://fmrif.nimh.nih.gov"
 	@echo "make clean    Remove generated output"
 
 build:

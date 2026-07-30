@@ -24,18 +24,26 @@ The main navigation is configured in `pelicanconf.py`.
 
 ## Deployment
 
-GitHub Pages builds on pushes to `main` using `.github/workflows/pelican.yml`.
-The workflow computes the GitHub Pages URL automatically. For a manual Actions
-run, you can override `SITEURL` with an absolute URL such as:
+The default production target is the NIH hostname:
+
+```bash
+make publish
+```
+
+`publishconf.py` defaults to `https://fmrif.nimh.nih.gov`. To test another
+absolute URL locally, override `SITEURL`:
+
+```bash
+SITEURL=https://example.org make publish
+```
+
+GitHub Pages is the special case. Pushes to `main` use
+`.github/workflows/pelican.yml`, which computes the GitHub Pages URL and passes
+it into `publishconf.py`. For a manual Actions run, you can override `SITEURL`
+with an absolute URL such as:
 
 ```text
 https://fmrif.nimh.nih.gov
-```
-
-For a local production build targeting the NIH hostname:
-
-```bash
-SITEURL=https://fmrif.nimh.nih.gov make publish
 ```
 
 Large PDF assets are intentionally ignored at `content/pdf/`; host those outside
