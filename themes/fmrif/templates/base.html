@@ -6,6 +6,15 @@
   <meta name="generator" content="Pelican">
   <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/site.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2VMNG6W014"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2VMNG6W014');
+  </script>
 </head>
 <body>
   <div class="topbar">
@@ -43,5 +52,7 @@
       <a href="https://www.hhs.gov/web/policies-and-standards/hhs-web-policies/privacy/index.html">Privacy Policy</a>
     </nav>
   </footer>
+  <!-- We participate in the US government's analytics program. See the data at analytics.usa.gov. -->
+  <script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=HHS&subagency=NIH"></script>
 </body>
 </html>
