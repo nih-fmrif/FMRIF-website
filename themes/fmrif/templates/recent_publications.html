@@ -11,14 +11,14 @@
       All <span>{{ recent_publications|length }}</span>
     </button>
     {% for item in recent_publication_ic_counts %}
-    <button class="filter-tab" type="button" data-publication-ic="{{ item.ic }}" aria-pressed="false">
+    <button class="filter-tab" type="button" data-publication-ic="{{ item.ic }}" data-ic-color="{{ item.ic|lower }}" aria-pressed="false">
       {{ item.ic }} <span>{{ item.count }}</span>
     </button>
     {% endfor %}
   </div>
   <div class="publication-grid">
     {% for publication in recent_publications %}
-    <a class="publication-card" href="{{ publication.pubmed_link }}" target="_blank" rel="noopener noreferrer" data-publication-card-ic="{{ publication.ic or 'Unspecified' }}">
+    <a class="publication-card" href="{{ publication.pubmed_link }}" target="_blank" rel="noopener noreferrer" data-publication-card-ic="{{ publication.ic or 'Unspecified' }}" data-ic-color="{{ (publication.ic or 'unspecified')|lower }}">
       {% if publication.ic %}<span class="ic-tag">{{ publication.ic }}</span>{% endif %}
       <h2>{{ publication.title }}</h2>
       {% if publication.display_authors %}<p class="publication-authors">{{ publication.display_authors }}</p>{% endif %}

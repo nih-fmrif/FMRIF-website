@@ -9,6 +9,13 @@
   --brand-dark: #12313b;
   --accent: #9d6f24;
   --accent-2: #4f7f64;
+  --ic-nimh: #1d7282;
+  --ic-ninds: #4f7f64;
+  --ic-niaaa: #9d6f24;
+  --ic-nhgri: #6d5aa8;
+  --ic-nccih: #b05a45;
+  --ic-nibib: #4776a6;
+  --ic-unspecified: #5d6d77;
   --max: 1160px;
 }
 
@@ -816,8 +823,8 @@ img {
   display: inline-block;
   padding: 0.18rem 0.45rem;
   border-radius: 4px;
-  background: var(--soft);
-  color: var(--brand-dark);
+  background: color-mix(in srgb, var(--card-color, var(--brand)) 14%, #ffffff);
+  color: var(--card-color, var(--brand-dark));
   font-size: 0.78rem;
   font-weight: 900;
 }
@@ -825,25 +832,30 @@ img {
 .filter-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin: 0 0 1.25rem;
+  align-items: flex-end;
+  gap: 0.25rem 1.15rem;
+  margin: 0 0 1.4rem;
+  padding: 0 0 0 0.55rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .filter-tab {
   display: inline-flex;
   align-items: center;
-  gap: 0.42rem;
-  padding: 0.42rem 0.68rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--panel);
-  color: var(--brand-dark);
+  gap: 0.55rem;
+  min-height: 3.3rem;
+  margin-bottom: -1px;
+  padding: 0.85rem 0.75rem;
+  border: 1px solid transparent;
+  border-bottom-color: var(--line);
+  border-radius: 6px 6px 0 0;
+  background: transparent;
+  color: var(--ink);
   font: inherit;
-  font-size: 0.92rem;
-  font-weight: 800;
+  font-size: 1rem;
+  font-weight: 900;
   line-height: 1;
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(18, 49, 59, 0.05);
 }
 
 .filter-tab span {
@@ -861,24 +873,66 @@ img {
 
 .filter-tab:hover,
 .filter-tab:focus-visible {
-  border-color: var(--brand);
-  color: var(--brand);
+  color: var(--tab-color, var(--brand-dark));
 }
 
 .filter-tab:focus-visible {
-  outline: 3px solid rgba(37, 126, 139, 0.22);
-  outline-offset: 2px;
+  outline: 3px solid rgba(37, 126, 139, 0.18);
+  outline-offset: -3px;
 }
 
 .filter-tab.is-active {
-  border-color: var(--brand-dark);
-  background: var(--brand-dark);
-  color: #ffffff;
+  border-color: var(--tab-color, var(--line));
+  border-bottom-color: var(--background);
+  background: var(--background);
+  color: var(--tab-color, var(--brand-dark));
 }
 
 .filter-tab.is-active span {
-  background: rgba(255, 255, 255, 0.16);
-  color: #ffffff;
+  background: color-mix(in srgb, var(--tab-color, var(--brand)) 14%, #ffffff);
+  color: var(--tab-color, var(--muted));
+}
+
+.filter-tab[data-ic-color="nimh"],
+.publication-card[data-ic-color="nimh"] {
+  --tab-color: var(--ic-nimh);
+  --card-color: var(--ic-nimh);
+}
+
+.filter-tab[data-ic-color="ninds"],
+.publication-card[data-ic-color="ninds"] {
+  --tab-color: var(--ic-ninds);
+  --card-color: var(--ic-ninds);
+}
+
+.filter-tab[data-ic-color="niaaa"],
+.publication-card[data-ic-color="niaaa"] {
+  --tab-color: var(--ic-niaaa);
+  --card-color: var(--ic-niaaa);
+}
+
+.filter-tab[data-ic-color="nhgri"],
+.publication-card[data-ic-color="nhgri"] {
+  --tab-color: var(--ic-nhgri);
+  --card-color: var(--ic-nhgri);
+}
+
+.filter-tab[data-ic-color="nccih"],
+.publication-card[data-ic-color="nccih"] {
+  --tab-color: var(--ic-nccih);
+  --card-color: var(--ic-nccih);
+}
+
+.filter-tab[data-ic-color="nibib"],
+.publication-card[data-ic-color="nibib"] {
+  --tab-color: var(--ic-nibib);
+  --card-color: var(--ic-nibib);
+}
+
+.filter-tab[data-ic-color="unspecified"],
+.publication-card[data-ic-color="unspecified"] {
+  --tab-color: var(--ic-unspecified);
+  --card-color: var(--ic-unspecified);
 }
 
 .publication-grid {
@@ -897,7 +951,7 @@ img {
   gap: 0.55rem;
   padding: 1rem;
   border: 1px solid var(--line);
-  border-left: 5px solid var(--brand);
+  border-left: 5px solid var(--card-color, var(--brand));
   border-radius: 6px;
   background: var(--panel);
   color: var(--ink);
@@ -905,12 +959,10 @@ img {
   box-shadow: 0 12px 30px rgba(18, 49, 59, 0.06);
 }
 
-.publication-card:nth-child(2n),
 .rolodex-card:nth-child(2n) {
   border-left-color: var(--accent);
 }
 
-.publication-card:nth-child(3n),
 .rolodex-card:nth-child(3n) {
   border-left-color: var(--accent-2);
 }
