@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Pelican">
+  <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/site.css">
+</head>
+<body>
+  <div class="topbar">
+    <a href="https://www.nih.gov/">National Institutes of Health</a>
+    <span>|</span>
+    <a href="https://www.nimh.nih.gov/">National Institute of Mental Health</a>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="{{ SITEURL }}/">
+      <img class="brand-logo" src="{{ SITEURL }}/images/site/fmrif-logo.png" alt="FMRIF">
+      <span>
+        <strong>Functional MRI Facility</strong>
+        <small>NIMH Intramural Research Program</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      {% for label, href in FMRIF_NAV %}
+      <a href="{{ href if href.startswith('http') else SITEURL ~ href }}">{{ label }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <nav aria-label="Policy links">
+      <a href="https://www.nimh.nih.gov/labs-at-nimh/index.shtml">NIMH</a>
+      <a href="https://www.hhs.gov/">HHS</a>
+      <a href="https://www.usa.gov">USA.gov</a>
+      <a href="https://www.nih.gov/institutes-nih/nih-office-director/office-communications-public-liaison/freedom-information-act-office">FOIA</a>
+      <a href="https://www.nimh.nih.gov/site-info/accessibility">Accessibility</a>
+      <a href="https://www.hhs.gov/web/policies-and-standards/hhs-web-policies/privacy/index.html">Privacy Policy</a>
+    </nav>
+  </footer>
+</body>
+</html>

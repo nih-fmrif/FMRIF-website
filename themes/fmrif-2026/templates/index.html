@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title %}{{ SITENAME }}{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <h1>MRI infrastructure for intramural neuroscience.</h1>
+    <p class="hero-byline">
+      FMRIF supports scanner operations, MRI acquisition, peripheral equipment, data access, and fMRI training for NIH investigators.
+    </p>
+  </div>
+  <div class="hero-links" aria-label="Primary FMRIF links">
+    <a href="{{ SITEURL }}/FMRIF_scanners/">
+      <span>Facilities</span>
+      <small>Scanner and peripheral equipment</small>
+    </a>
+    <a href="{{ SITEURL }}/Staff/">
+      <span>Staff</span>
+      <small>Contacts and facility team</small>
+    </a>
+    <a href="https://oxygen.nimh.nih.gov/internal/schedule/">
+      <span>Scanner Schedules</span>
+      <small>Current scheduling system</small>
+    </a>
+    <a href="https://oxygen.nimh.nih.gov/internal/manual/troubleShootingAndMaintenance/scannerRoomImages.html">
+      <span>MRI Room Status</span>
+      <small>Room cameras and status</small>
+    </a>
+    <a href="https://fmrif-xnat.nimh.nih.gov/">
+      <span>Data Download</span>
+      <small>FMRIF XNAT</small>
+    </a>
+    <a href="{{ SITEURL }}/SummerCourse/">
+      <span>Summer Course</span>
+      <small>Lectures, videos, and slides</small>
+    </a>
+  </div>
+</section>
+
+<section class="section about-section">
+  <div class="section-heading">
+    <h2>About FMRIF</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-copy">
+      <p>
+        The Functional MRI Facility is a core resource for the NIH Intramural Research Program.
+        Initiated in 1999 by NIMH and NINDS, FMRIF supports MRI studies that advance understanding
+        of healthy and diseased brain anatomy, function, and physiology.
+      </p>
+      <p>
+        The facility provides a complete environment for stimulus presentation, subject-interface
+        devices, behavioral and physiological monitoring, scanner operations, data transfer,
+        storage infrastructure, and web-based services.
+      </p>
+      <p>
+        FMRIF currently supports five human MRI scanners: two GE 3 Tesla scanners, one Siemens
+        3 Tesla scanner, and two Siemens 7 Tesla scanners.
+      </p>
+      <p>
+        From its inception in 2000 through July 2026, intramural investigators have produced
+        1,480 peer-reviewed publications using data acquired in the FMRIF core facility.
+        These publications include 851 papers from NIMH, 429 from NINDS, and 200 from other
+        institutes, and have been cited 133,422 times.
+      </p>
+      <p>
+        Staff scientists collaborate closely with NIH investigators on custom capabilities including
+        pulse sequences, basic processing pipelines, technical consultation, and study-specific advice.
+        The FMRIF team remains committed to a world-class fMRI scanning environment for studying brain
+        function, physiology, and morphology in healthy volunteers and clinical populations.
+      </p>
+    </div>
+    <aside class="about-stats" aria-label="FMRIF summary">
+      <div>
+        <strong>5</strong>
+        <span>Human MRI scanners</span>
+      </div>
+      <div>
+        <strong>1,480</strong>
+        <span>Peer-reviewed publications</span>
+      </div>
+      <div>
+        <strong>133,422</strong>
+        <span>Total citations</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section home-feature-grid">
+  <div>
+    <div class="section-heading">
+      <h2>Staff</h2>
+      <a class="text-link" href="{{ SITEURL }}/Staff/">View staff</a>
+    </div>
+    <div class="home-staff-grid">
+      {% for person in staff if person.status == "Active" and person.slug == "peter-bandettini" %}
+      <a href="{{ SITEURL }}{{ person.url }}">
+        {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
+        <span>{{ person.title }}</span>
+        {% if person.position %}<small>{{ person.position }}</small>{% endif %}
+      </a>
+      {% endfor %}
+      {% for person in staff if person.status == "Active" and person.slug != "peter-bandettini" and person.position not in ["MRI Technologist", "Postdoc Fellow", "Post-Bac IRTA"] %}
+      <a href="{{ SITEURL }}{{ person.url }}">
+        {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
+        <span>{{ person.title }}</span>
+        {% if person.position %}<small>{{ person.position }}</small>{% endif %}
+      </a>
+      {% endfor %}
+      {% for person in staff if person.status == "Active" and person.position == "Postdoc Fellow" %}
+      <a href="{{ SITEURL }}{{ person.url }}">
+        {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
+        <span>{{ person.title }}</span>
+        {% if person.position %}<small>{{ person.position }}</small>{% endif %}
+      </a>
+      {% endfor %}
+      {% for person in staff if person.status == "Active" and person.position == "Post-Bac IRTA" %}
+      <a href="{{ SITEURL }}{{ person.url }}">
+        {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
+        <span>{{ person.title }}</span>
+        {% if person.position %}<small>{{ person.position }}</small>{% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="home-feature-stack">
+    <div>
+      <div class="section-heading">
+        <h2>Recent Publications</h2>
+        <div class="publication-heading-actions">
+          <span class="rolodex-timer" aria-hidden="true"></span>
+          <a class="text-link" href="{{ SITEURL }}/recent-publications/">View all</a>
+        </div>
+      </div>
+      <div class="publication-rolodex" aria-label="Recent publications">
+        {% for publication in recent_publications[:12] %}
+        <a class="rolodex-card" href="{{ publication.pubmed_link }}" aria-label="Open PubMed record for {{ publication.title }}">
+          {% if publication.ic %}<span class="ic-tag">{{ publication.ic }}</span>{% endif %}
+          <h3>{{ publication.title }}</h3>
+          <p class="rolodex-meta">{{ publication.publication_year }}</p>
+          {% if publication.display_authors %}<p class="rolodex-authors">{{ publication.display_authors }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const cards = Array.from(document.querySelectorAll('.publication-rolodex .rolodex-card'));
+    const timer = document.querySelector('.rolodex-timer');
+    if (cards.length < 3) return;
+    const intervalMs = 3000;
+    let timerFrame = null;
+    const shuffled = cards
+      .map((card) => ({ card, sort: Math.random() }))
+      .sort((left, right) => left.sort - right.sort)
+      .map(({ card }) => card);
+    let index = 0;
+
+    const restartTimer = () => {
+      if (!timer) return;
+      if (timerFrame) cancelAnimationFrame(timerFrame);
+      const startedAt = performance.now();
+      const tick = (now) => {
+        const elapsed = Math.min(now - startedAt, intervalMs);
+        const remaining = 1 - (elapsed / intervalMs);
+        timer.style.setProperty('--timer-angle', `${Math.max(0, remaining * 360)}deg`);
+        if (elapsed < intervalMs) timerFrame = requestAnimationFrame(tick);
+      };
+      timerFrame = requestAnimationFrame(tick);
+    };
+
+    const showSet = () => {
+      cards.forEach((card) => card.classList.remove('is-active', 'is-secondary', 'is-tertiary'));
+      shuffled[index % shuffled.length].classList.add('is-active');
+      shuffled[(index + 1) % shuffled.length].classList.add('is-active', 'is-secondary');
+      shuffled[(index + 2) % shuffled.length].classList.add('is-active', 'is-tertiary');
+      restartTimer();
+    };
+    showSet();
+    setInterval(() => {
+      index = (index + 3) % shuffled.length;
+      showSet();
+    }, intervalMs);
+  })();
+</script>
+{% endblock %}

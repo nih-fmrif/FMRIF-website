@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block title %}FMRIF Scanners | {{ SITENAME }}{% endblock %}
+{% block content %}
+<article class="page">
+  <header class="page-header">
+    <h1>FMRIF Scanners</h1>
+    <p>{{ page.content|striptags }}</p>
+  </header>
+
+  <section class="scanner-section">
+    <div class="section-heading">
+      <h2>3T Scanners</h2>
+    </div>
+    <div class="scanner-card-grid">
+      <article class="scanner-card">
+        <img src="{{ SITEURL }}/images/scanners/3ta.png" alt="3TA scanner">
+        <div>
+          <p class="eyebrow">3TA</p>
+          <h3>GE MR750</h3>
+        </div>
+      </article>
+      <article class="scanner-card">
+        <img src="{{ SITEURL }}/images/scanners/3tb.png" alt="3TB scanner">
+        <div>
+          <p class="eyebrow">3TB</p>
+          <h3>GE MR750</h3>
+        </div>
+      </article>
+      <article class="scanner-card">
+        <img src="{{ SITEURL }}/images/scanners/3td.png" alt="3TD scanner">
+        <div>
+          <p class="eyebrow">3TD</p>
+          <h3>Siemens Skyra</h3>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="scanner-section">
+    <div class="section-heading">
+      <h2>7T Scanners</h2>
+    </div>
+    <div class="scanner-card-grid scanner-card-grid-two">
+      <article class="scanner-card">
+        <img src="{{ SITEURL }}/images/scanners/7ta.jpg" alt="7TA scanner">
+        <div>
+          <p class="eyebrow">7TA</p>
+          <h3>Siemens Magnetome 7T+</h3>
+        </div>
+      </article>
+      <article class="scanner-card">
+        <img src="{{ SITEURL }}/images/scanners/7tb.png" alt="7TB scanner">
+        <div>
+          <p class="eyebrow">7TB</p>
+          <h3>Siemens Terra 7T</h3>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="scanner-section">
+    <div class="section-heading">
+      <h2>Peripheral Equipment</h2>
+    </div>
+    <div class="scanner-table-wrap">
+      <table class="scanner-table">
+        <thead>
+          <tr>
+            <th>Peripheral</th>
+            <th>3TA</th>
+            <th>3TB</th>
+            <th>3TD</th>
+            <th>7TA</th>
+            <th>7TB</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Audio</th>
+            <td>Avotec + Optoactive</td>
+            <td>Avotec + Optoactive</td>
+            <td>Optoactive</td>
+            <td>Optoactive</td>
+            <td>Optoactive</td>
+          </tr>
+          <tr>
+            <th>Video</th>
+            <td>PST MRDPS projector</td>
+            <td>BOLDscreen32</td>
+            <td>PST Hyperion</td>
+            <td>ProPixx</td>
+            <td>BOLDscreen32</td>
+          </tr>
+          <tr>
+            <th>Button boxes</th>
+            <td>Current Design; FORP</td>
+            <td>Current Design; FORP</td>
+            <td>Current Design; FORP</td>
+            <td>Current Design; FORP</td>
+            <td>Current Design; FORP</td>
+          </tr>
+          <tr>
+            <th>Eye tracking</th>
+            <td>SR Research EyeLink 1000 Plus</td>
+            <td>SR Research EyeLink 1000 Plus</td>
+            <td>SR Research EyeLink 1000 Plus</td>
+            <td>SR Research EyeLink 1000 Plus</td>
+            <td>SR Research EyeLink 1000 Plus</td>
+          </tr>
+          <tr>
+            <th>Physiology</th>
+            <td>Scanner+; Biopac GSR</td>
+            <td>Scanner+; Biopac GSR</td>
+            <td>Biopac GSR, respiration, pulse-ox</td>
+            <td>Biopac GSR, respiration, pulse-ox</td>
+            <td>Biopac GSR, respiration, pulse-ox</td>
+          </tr>
+          <tr>
+            <th>EEG</th>
+            <td>Shared EGI 256 channel EEG</td>
+            <td>Shared EGI 256 channel EEG</td>
+            <td>Shared EGI 256 channel EEG</td>
+            <td>In technical evaluation</td>
+            <td>In technical evaluation</td>
+          </tr>
+          <tr>
+            <th>Coils / notes</th>
+            <td>32 channel; NOVA 32 channel</td>
+            <td>32 channel; NOVA 32 channel</td>
+            <td>20 channel; 32 channel; 64 channel</td>
+            <td>32 channel</td>
+            <td>32 channel</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="vendor-links">
+      <a href="https://www.optoacoustics.com/medical/optoactive-ii">Optoacoustics Optoactive</a>
+      <a href="https://www.avotecinc.com/">Avotec</a>
+      <a href="https://www.crsltd.com/tools-for-functional-imaging/mr-safe-displays/boldscreen-32-lcd-for-fmri/">BOLDscreen32</a>
+      <a href="https://www.sr-research.com/eyelink-1000-plus/">SR Research EyeLink 1000 Plus</a>
+      <a href="https://www.biopac.com/">Biopac</a>
+      <a href="https://www.egi.com/">EGI EEG</a>
+    </div>
+  </section>
+</article>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Recent Publications | {{ SITENAME }}{% endblock %}
+{% block content %}
+<section class="page page-wide">
+  <header class="page-header">
+    <h1>Recent Publications</h1>
+    <p>Peer-reviewed publications from 2024-2026 using data acquired in the FMRIF core facility.</p>
+  </header>
+  <div class="filter-tabs" role="tablist" aria-label="Filter publications by institute">
+    <button class="filter-tab is-active" type="button" data-publication-ic="all">
+      All <span>{{ recent_publications|length }}</span>
+    </button>
+    {% for item in recent_publication_ic_counts %}
+    <button class="filter-tab" type="button" data-publication-ic="{{ item.ic }}">
+      {{ item.ic }} <span>{{ item.count }}</span>
+    </button>
+    {% endfor %}
+  </div>
+  <div class="publication-grid">
+    {% for publication in recent_publications %}
+    <a class="publication-card" href="{{ publication.pubmed_link }}" target="_blank" rel="noopener noreferrer" data-publication-card-ic="{{ publication.ic or 'Unspecified' }}">
+      {% if publication.ic %}<span class="ic-tag">{{ publication.ic }}</span>{% endif %}
+      <h2>{{ publication.title }}</h2>
+      {% if publication.display_authors %}<p class="publication-authors">{{ publication.display_authors }}</p>{% endif %}
+      <p class="publication-meta">
+        {% if publication.journal %}<span>{{ publication.journal }}</span>{% endif %}
+        {% if publication.publication_year %}<span>{{ publication.publication_year }}</span>{% endif %}
+        {% if publication.doi %}<span>doi: {{ publication.doi }}</span>{% endif %}
+      </p>
+      <small>PubMed{% if publication.pubmed_id %}: {{ publication.pubmed_id }}{% endif %}</small>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+<script>
+  document.querySelectorAll('[data-publication-ic]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.publicationIc;
+      document.querySelectorAll('[data-publication-ic]').forEach((tab) => {
+        tab.classList.toggle('is-active', tab === button);
+      });
+      document.querySelectorAll('[data-publication-card-ic]').forEach((card) => {
+        card.hidden = filter !== 'all' && card.dataset.publicationCardIc !== filter;
+      });
+    });
+  });
+</script>
+{% endblock %}

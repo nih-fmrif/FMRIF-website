@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | {{ SITENAME }}{% endblock %}
+{% block content %}
+<article class="page">
+  <header class="page-header">
+    {% if ic %}<p class="eyebrow">{{ ic }}</p>{% endif %}
+    <h1>{{ title }}</h1>
+    {% if journal or publication_year %}<p>{{ journal }}{% if publication_year %}, {{ publication_year }}{% endif %}</p>{% endif %}
+  </header>
+  <div class="prose">
+    {% if display_authors %}<p><strong>Authors:</strong> {{ display_authors }}</p>{% endif %}
+    <p>{{ reference }}</p>
+    {% if pubmed_link %}<p><a class="button" href="{{ pubmed_link }}">Open in PubMed</a></p>{% endif %}
+    {{ content }}
+  </div>
+</article>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}FMRIF Summer Course | {{ SITENAME }}{% endblock %}
+{% block content %}
+<article class="page page-wide">
+  <div class="prose course-prose">
+    {{ page.content }}
+    <nav class="year-jump" aria-label="Jump to course year">
+      {% for year_group in summer_course_lectures_by_year %}
+      <a href="#{{ year_group.anchor }}">{{ year_group.year }}</a>
+      {% endfor %}
+    </nav>
+    {% for year_group in summer_course_lectures_by_year %}
+    <h2 id="{{ year_group.anchor }}">{{ year_group.year }}</h2>
+    <div class="table-wrap">
+      <table class="course-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Day</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Topic</th>
+            <th>Slides</th>
+            <th>Lecturer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for lecture in year_group.lectures %}
+          <tr>
+            <td>{{ lecture.number }}</td>
+            <td>{{ lecture.day }}</td>
+            <td>{{ lecture.course_date }}</td>
+            <td>{{ lecture.time }}</td>
+            <td>{{ lecture.location }}</td>
+            <td>
+              {% if lecture.video_link %}
+              <a href="{{ lecture.video_link }}" class="is-external-link">{{ lecture.topic }}</a>
+              {% else %}
+              {{ lecture.topic }}
+              {% endif %}
+            </td>
+            <td>
+              {% if lecture.pdf_link %}
+              <a href="{{ SITEURL }}{{ lecture.pdf_link }}" class="is-asset-link">PDF</a>
+              {% endif %}
+            </td>
+            <td>{{ lecture.speaker }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endfor %}
+  </div>
+</article>
+<script>
+  document.querySelectorAll('.year-jump a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      history.pushState(null, '', link.getAttribute('href'));
+      target.scrollIntoView({ block: 'start' });
+    });
+  });
+</script>
+{% endblock %}

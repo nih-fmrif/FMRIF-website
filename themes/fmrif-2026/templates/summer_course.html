@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}FMRIF Summer Course | {{ SITENAME }}{% endblock %}
+{% block content %}
+<section class="page">
+  <header class="page-header">
+    <h1>FMRIF Summer Course</h1>
+    <p>Course information, logistics, schedules, and training materials.</p>
+  </header>
+  <div class="card-grid">
+    {% for course_page in summer_course_pages %}
+    <article class="feature-card">
+      <h2><a href="{{ SITEURL }}{{ course_page.url }}">{{ course_page.title }}</a></h2>
+      {% if course_page.summary %}<p>{{ course_page.summary|striptags }}</p>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

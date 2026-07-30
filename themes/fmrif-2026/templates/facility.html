@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | {{ SITENAME }}{% endblock %}
+{% block content %}
+<article class="page">
+  <header class="page-header">
+    {% if short_name %}<p class="eyebrow">{{ short_name }}</p>{% endif %}
+    <h1>{{ title }}</h1>
+    {% if summary %}<p>{{ summary|striptags }}</p>{% endif %}
+  </header>
+  <div class="prose">{{ content }}</div>
+</article>
+{% endblock %}

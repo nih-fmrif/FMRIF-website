@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}FMRIF Staff | {{ SITENAME }}{% endblock %}
+{% block content %}
+<section class="page">
+  <header class="page-header">
+    <h1>FMRIF Staff</h1>
+    <p>FMRIF leadership, technical staff, and facility support contacts.</p>
+  </header>
+  <section class="subsection">
+    <h2>Staff</h2>
+  <div class="staff-grid">
+    {% for person in staff if person.status == "Active" and person.position != "MRI Technologist" and person.position != "Post-Bac IRTA" %}
+    <article class="staff-card">
+      {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
+      <div>
+      <h2><a href="{{ SITEURL }}{{ person.url }}">{{ person.title }}</a></h2>
+      {% if person.position %}<p class="role">{{ person.position }}</p>{% endif %}
+      {% if person.email %}<p><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>{% endif %}
+      {% if person.phone %}<p>{{ person.phone }}</p>{% endif %}
+      {% if person.scholar %}<p><a href="{{ person.scholar }}">Google Scholar</a></p>{% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  </section>
+  {% set postdoc_fellows = staff|selectattr("position", "equalto", "Postdoc Fellow")|rejectattr("status", "equalto", "Alumni")|list %}
+  {% if postdoc_fellows %}
+  <section class="subsection">
+    <h2>Postdoc Fellows</h2>
+    <div class="staff-grid">
+      {% for person in postdoc_fellows|sort(attribute="last_name") %}
+      <article class="staff-card">
+        {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
+        <div>
+          <h2><a href="{{ SITEURL }}{{ person.url }}">{{ person.title }}</a></h2>
+          {% if person.position %}<p class="role">{{ person.position }}</p>{% endif %}
+          {% if person.email %}<p><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>{% endif %}
+          {% if person.phone %}<p>{{ person.phone }}</p>{% endif %}
+          {% if person.scholar %}<p><a href="{{ person.scholar }}">Google Scholar</a></p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+  {% set current_postbacs = staff|selectattr("position", "equalto", "Post-Bac IRTA")|rejectattr("status", "equalto", "Alumni")|list %}
+  {% if current_postbacs %}
+  <section class="subsection">
+    <h2>Post-bac IRTAs</h2>
+    <div class="staff-grid">
+      {% for person in current_postbacs|sort(attribute="last_name") %}
+      <article class="staff-card">
+        {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
+        <div>
+          <h2><a href="{{ SITEURL }}{{ person.url }}">{{ person.title }}</a></h2>
+          {% if person.position %}<p class="role">{{ person.position }}</p>{% endif %}
+          {% if person.email %}<p><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>{% endif %}
+          {% if person.phone %}<p>{{ person.phone }}</p>{% endif %}
+          {% if person.scholar %}<p><a href="{{ person.scholar }}">Google Scholar</a></p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+  <section class="subsection">
+    <h2>MRI Technologists</h2>
+    <div class="staff-grid">
+      {% for person in staff|sort(attribute="last_name") if person.position == "MRI Technologist" %}
+      <article class="staff-card">
+        {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
+        <div>
+          <h2><a href="{{ SITEURL }}{{ person.url }}">{{ person.title }}</a></h2>
+          {% if person.position %}<p class="role">{{ person.position }}</p>{% endif %}
+          {% if person.email %}<p><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>{% endif %}
+          {% if person.phone %}<p>{{ person.phone }}</p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="subsection">
+    <h2>Alumni</h2>
+    <div class="staff-grid">
+      {% for person in staff|sort(attribute="last_name") if person.status == "Alumni" %}
+      <article class="staff-card">
+        {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
+        <div>
+          <h2>
+            {% if person.external_link %}
+            <a href="{{ person.external_link }}">{{ person.title }}</a>
+            {% else %}
+            <a href="{{ SITEURL }}{{ person.url }}">{{ person.title }}</a>
+            {% endif %}
+          </h2>
+          {% if person.position %}<p class="role">{{ person.position }}</p>{% endif %}
+          {% if person.years %}<p>{{ person.years }}</p>{% endif %}
+          {% if person.scholar %}<p><a href="{{ person.scholar }}">Google Scholar</a></p>{% endif %}
+          {% if person.external_link %}<p><a href="{{ person.external_link }}">Current profile</a></p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</section>
+{% endblock %}
