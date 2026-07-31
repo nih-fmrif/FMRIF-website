@@ -13,6 +13,7 @@
       <dl class="metadata-list">
         {% if email %}<dt>Email</dt><dd><a href="mailto:{{ email }}">{{ email }}</a></dd>{% endif %}
         {% if phone %}<dt>Phone</dt><dd>{{ phone }}</dd>{% endif %}
+        {% if address %}<dt>Address</dt><dd>{{ address }}</dd>{% endif %}
         {% if years %}<dt>Years</dt><dd>{{ years }}</dd>{% endif %}
         {% if scholar %}<dt>Scholar</dt><dd><a href="{{ scholar }}">Google Scholar</a></dd>{% endif %}
         {% if external_link %}<dt>Current profile</dt><dd><a href="{{ external_link }}">{{ external_link }}</a></dd>{% endif %}
