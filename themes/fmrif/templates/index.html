@@ -151,7 +151,7 @@
     const cards = Array.from(document.querySelectorAll('.publication-rolodex .rolodex-card'));
     const timer = document.querySelector('.rolodex-timer');
     if (cards.length < 3) return;
-    const intervalMs = 3000;
+    const intervalMs = 8000;
     let timerFrame = null;
     const shuffled = cards
       .map((card) => ({ card, sort: Math.random() }))
