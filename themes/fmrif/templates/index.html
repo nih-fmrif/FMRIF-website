@@ -134,7 +134,7 @@
       </div>
       <div class="publication-rolodex" aria-label="Recent publications">
         {% for publication in recent_publications[:12] %}
-        <a class="rolodex-card" href="{{ publication.pubmed_link }}" aria-label="Open PubMed record for {{ publication.title }}">
+        <a class="rolodex-card" href="{{ publication.pubmed_link }}" aria-label="Open PubMed record for {{ publication.title }}" data-ic-color="{{ (publication.ic or 'unspecified')|lower }}">
           {% if publication.ic %}<span class="ic-tag">{{ publication.ic }}</span>{% endif %}
           <h3>{{ publication.title }}</h3>
           <p class="rolodex-meta">{{ publication.publication_year }}</p>
