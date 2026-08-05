@@ -28,13 +28,9 @@ FMRIF_NAV = [
     ("Facilities", "/FMRIF_scanners/"),
     ("Staff", "/Staff/"),
     ("Summer Course", "/SummerCourse/"),
-    ("Recent Publications", "/recent-publications/"),
+    ("Publications", "/recent-publications/"),
     ("Data Download", "https://fmrif-xnat.nimh.nih.gov/"),
     ("Scanner Schedules", "https://oxygen.nimh.nih.gov/internal/schedule/"),
-    (
-        "MRI Room Status",
-        "https://oxygen.nimh.nih.gov/internal/manual/troubleShootingAndMaintenance/scannerRoomImages.html",
-    ),
 ]
 
 FEED_ALL_ATOM = None
