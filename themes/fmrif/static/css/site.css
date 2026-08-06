@@ -288,6 +288,14 @@ img {
   font-size: clamp(1.9rem, 3.35vw, 3.35rem);
 }
 
+.recent-publications-page .page-header {
+  max-width: none;
+}
+
+.recent-publications-page .page-header h1 {
+  white-space: nowrap;
+}
+
 .hero-byline,
 .page-header p {
   color: var(--muted);
@@ -431,6 +439,7 @@ img {
 }
 
 .about-stats strong,
+.about-stats em,
 .about-stats span {
   display: block;
 }
@@ -445,6 +454,20 @@ img {
   margin-top: 0.35rem;
   color: var(--muted);
   font-weight: 700;
+}
+
+.about-stats em {
+  margin-bottom: 0.25rem;
+  color: var(--brand);
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.about-stats .publication-stat span {
+  max-width: 13rem;
 }
 
 .card-grid,
@@ -1276,6 +1299,10 @@ img {
 }
 
 @media (max-width: 850px) {
+  .recent-publications-page .page-header h1 {
+    white-space: normal;
+  }
+
   .site-header,
   .hero,
   .split,
