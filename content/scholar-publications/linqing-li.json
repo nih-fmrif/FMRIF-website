@@ -1,0 +1,106 @@
+{
+  "profile": {
+    "title": "Linqing Li, Ph.D.",
+    "slug": "linqing-li",
+    "scholar_user_id": "yHcUUoIAAAAJ",
+    "scholar": "https://scholar.google.com/citations?hl=en&user=yHcUUoIAAAAJ"
+  },
+  "publications": [
+    {
+      "title": "Blood nulling versus tissue suppression: Enhancing integrated VASO and perfusion (VAPER) contrast for laminar fMRI",
+      "authors": "Y Chai, L Li, R Stirnberg, L Huber, T St\u00f6cker, PA Bandettini, BP Sutton",
+      "venue": "Imaging neuroscience 3, imag_a_00453, 2025",
+      "year": "2025",
+      "citations": 4,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:hMod-77fHWUC"
+    },
+    {
+      "title": "A Novel Model for Dynamic Quantification of Oxygen Metabolism of Visual Stimulation at 3T",
+      "authors": "L Li, N Blockley, AJ Derbyshire, G Chen",
+      "venue": "Proc. Intl. Soc. Mag. Reson. Med 33, 1584, 2025",
+      "year": "2025",
+      "citations": null,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:YFjsv_pBGBYC"
+    },
+    {
+      "title": "Improving laminar fMRI specificity by reducing macrovascular bias revealed by respiration effects",
+      "authors": "Y Chai, AT Morgan, DA Handwerker, L Li, L Huber, BP Sutton, ...",
+      "venue": "Imaging Neuroscience 2, imag-2-00249, 2024",
+      "year": "2024",
+      "citations": 7,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:k_IJM867U9cC"
+    },
+    {
+      "title": "Unlocking near-whole-brain, layer-specific functional connectivity with 3D VAPER fMRI",
+      "authors": "Y Chai, AT Morgan, H Xie, L Li, L Huber, PA Bandettini, BP Sutton",
+      "venue": "Imaging Neuroscience 2, imag-2-00140, 2024",
+      "year": "2024",
+      "citations": 15,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:M3NEmzRMIkIC"
+    },
+    {
+      "title": "Quantification of cerebral blood volume changes caused by visual stimulation at 3 T using DANTE\u2010prepared dual\u2010echo EPI",
+      "authors": "L Li, C Law, S Marrett, Y Chai, L Huber, P Jezzard, P Bandettini",
+      "venue": "Magnetic resonance in medicine 87 (4), 1846-1862, 2022",
+      "year": "2022",
+      "citations": 4,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:-f6ydRqryjwC"
+    },
+    {
+      "title": "Magnetization transfer weighted EPI facilitates cortical depth determination in native fMRI space",
+      "authors": "Y Chai, L Li, Y Wang, L Huber, BA Poser, J Duyn, PA Bandettini",
+      "venue": "Neuroimage 242, 118455, 2021",
+      "year": "2021",
+      "citations": 17,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:hC7cP41nSMkC"
+    },
+    {
+      "title": "Topographical and laminar distribution of audiovisual processing within human planum temporale",
+      "authors": "Y Chai, TT Liu, S Marrett, L Li, A Khojandi, DA Handwerker, A Alink, ...",
+      "venue": "Progress in Neurobiology 205, 102121, 2021",
+      "year": "2021",
+      "citations": 21,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:qUcmZB5y_30C"
+    },
+    {
+      "title": "Non-calibrated Equations for Quantification of Local fMRI Signal Changes with Hemodynamic Oxygen Metabolism (CBF and CMRO2)",
+      "authors": "L Li, S Marrett, AJ Derbyshire, P Bandettini",
+      "venue": "Proc. Intl. Soc. Mag. Reson. Med, 2021",
+      "year": "2021",
+      "citations": 1,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:bEWYMUwI8FkC"
+    },
+    {
+      "title": "Navigator\u2010based reacquisition and estimation of motion\u2010corrupted data: Application to multi\u2010echo spin echo for carotid wall MRI",
+      "authors": "R Frost, L Biasiolli, L Li, K Hurst, M Alkhalil, RP Choudhury, MD Robson, ...",
+      "venue": "Magnetic resonance in medicine 83 (6), 2026-2041, 2020",
+      "year": "2020",
+      "citations": 7,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:qxL8FJ1GzNcC"
+    },
+    {
+      "title": "Integrated VASO and perfusion contrast: A new tool for laminar functional MRI",
+      "authors": "Y Chai, L Li, L Huber, BA Poser, PA Bandettini",
+      "venue": "NeuroImage 207, 116358, 2020",
+      "year": "2020",
+      "citations": 61,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:4DMP91E08xMC"
+    },
+    {
+      "title": "Quantification of in vivo transverse relaxation of glutamate in the frontal cortex of human brain by radio frequency pulse-driven longitudinal steady state",
+      "authors": "N Li, L Li, Y Zhang, M Ferraris Araneta, C Johnson, J Shen",
+      "venue": "Plos one 14 (4), e0215210, 2019",
+      "year": "2019",
+      "citations": 5,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:dhFuZR0502QC"
+    },
+    {
+      "title": "A magnetization transfer weighted anatomical reference allows laminar fMRI analysis in native functional image space",
+      "authors": "Y Chai, L Li, Y Wang, L Huber, B Poser, J Duyn, PA Bandettini",
+      "venue": "",
+      "year": "2019",
+      "citations": 1,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=yHcUUoIAAAAJ&pagesize=12&sortby=pubdate&citation_for_view=yHcUUoIAAAAJ:IWHjjKOFINEC"
+    }
+  ]
+}
