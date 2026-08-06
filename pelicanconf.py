@@ -22,7 +22,13 @@ MARKDOWN = {
     "output_format": "html5",
 }
 
-PLUGINS = ["plugins.fmrif_collections"]
+PLUGINS = [
+    "plugins.google_scholar_publications",
+    "plugins.fmrif_collections",
+]
+
+SCHOLAR_PUBLICATIONS_CACHE_DIR = "scholar-publications"
+SCHOLAR_PUBLICATIONS_LIMIT = 8
 
 FMRIF_NAV = [
     ("Facilities", "/FMRIF_scanners/"),

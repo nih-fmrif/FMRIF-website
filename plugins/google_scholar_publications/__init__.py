@@ -1,0 +1,1 @@
+from .google_scholar_publications import augment_staff_publications, register

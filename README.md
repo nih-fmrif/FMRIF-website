@@ -22,6 +22,26 @@ make serve
 
 The main navigation is configured in `pelicanconf.py`.
 
+## Staff publications
+
+Staff profiles can include a `Scholar:` metadata field pointing to a public
+Google Scholar profile. Cached publication data lives in
+`content/scholar-publications/` and is rendered automatically on matching staff
+profile pages.
+
+Refresh the cache intentionally rather than during every build:
+
+```bash
+cp .env.example .env
+# Edit .env and set SERPAPI_KEY.
+make harvest-scholar
+```
+
+Google Scholar does not provide bulk access, so the refresh script uses SerpAPI
+when you provide an API key. The Pelican build itself only reads cached JSON,
+which keeps deployments reproducible and avoids scraping Scholar during site
+generation.
+
 ## Deployment
 
 The default production target is the NIH hostname:

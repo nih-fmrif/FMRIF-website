@@ -16,12 +16,13 @@ OUTPUTDIR := $(BASEDIR)/output
 CONFFILE := $(BASEDIR)/pelicanconf.py
 PUBLISHCONF := $(BASEDIR)/publishconf.py
 
-.PHONY: help build clean rebuild serve publish
+.PHONY: help build clean rebuild serve publish harvest-scholar
 
 help:
 	@echo "make build    Build the development site"
 	@echo "make serve    Build, watch, and serve at http://127.0.0.1:8000"
 	@echo "make publish  Build production site for https://fmrif.nimh.nih.gov"
+	@echo "make harvest-scholar  Refresh cached staff Google Scholar publications"
 	@echo "make clean    Remove generated output"
 
 build:
@@ -37,3 +38,6 @@ serve:
 
 publish:
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(PUBLISHCONF)" $(PELICANOPTS)
+
+harvest-scholar:
+	python tools/harvest_scholar_publications.py

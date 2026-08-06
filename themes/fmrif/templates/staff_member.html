@@ -20,6 +20,32 @@
       </dl>
       {% endif %}
       {{ content }}
+      {% if scholar_publications %}
+      <section class="staff-publications">
+        <div class="staff-publications-header">
+          <h2>Recent Publications</h2>
+        </div>
+        <div class="staff-publication-list">
+          {% for publication in scholar_publications %}
+          <article class="staff-publication">
+            <h3>
+              {% if publication.url %}
+              <a href="{{ publication.url }}">{{ publication.title }}</a>
+              {% else %}
+              {{ publication.title }}
+              {% endif %}
+            </h3>
+            {% if publication.authors %}<p>{{ publication.authors }}</p>{% endif %}
+            <p class="publication-meta">
+              {% if publication.venue %}<span>{{ publication.venue }}</span>{% endif %}
+              {% if publication.year %}<span>{{ publication.year }}</span>{% endif %}
+              {% if publication.citations %}<span>{{ publication.citations }} citations</span>{% endif %}
+            </p>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
     </div>
   </div>
 </article>

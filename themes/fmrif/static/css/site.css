@@ -1276,6 +1276,51 @@ img {
   font-weight: 800;
 }
 
+.staff-publications {
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+
+.staff-publications-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.staff-publications-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.staff-publications-header a {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.staff-publication-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.staff-publication {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.staff-publication h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.staff-publication p {
+  margin: 0;
+  line-height: 1.45;
+}
+
 .site-footer {
   margin-top: 3rem;
   border-top: 1px solid var(--line);
@@ -1345,5 +1390,9 @@ img {
   .publication-grid,
   .profile-layout {
     grid-template-columns: 1fr;
+  }
+
+  .staff-publications-header {
+    display: grid;
   }
 }

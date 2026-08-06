@@ -7,6 +7,8 @@ from pathlib import Path
 from pelican import signals
 from pelican.readers import MarkdownReader
 
+from plugins.google_scholar_publications import augment_staff_publications
+
 
 COLLECTIONS = {
     "facilities": {
@@ -217,6 +219,7 @@ def build_collections(generator):
         name: _read_collection(generator, name, spec)
         for name, spec in COLLECTIONS.items()
     }
+    augment_staff_publications(generator.settings, collections["staff"])
 
     generator.context.update(
         {
