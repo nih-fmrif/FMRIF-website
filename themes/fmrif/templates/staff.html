@@ -87,11 +87,7 @@
         {% if person.image %}<img src="{{ SITEURL }}/images/staff/{{ person.image }}" alt="{{ person.title }}">{% endif %}
         <div>
           <h2>
-            {% if person.external_link %}
-            <a href="{{ person.external_link }}">{{ person.title }}</a>
-            {% else %}
             <a href="{{ SITEURL }}{{ person.url }}">{{ person.title }}</a>
-            {% endif %}
           </h2>
           {% if person.position %}<p class="role">{{ person.position }}</p>{% endif %}
           {% if person.years %}<p>{{ person.years }}</p>{% endif %}
