@@ -9,7 +9,7 @@ Time: 1:00 to 2:00 PM
 Location: FAES Room 3
 Topic: fMRI Connectivity and advanced processing strategies
 Video_link: https://youtu.be/BRPxxah3BBo
-PDF_link: 
+PDF_link: /pdf/2026/2026_9_josh_faskowitz.pdf
 Speaker: Josh Faskowitz
 
 fMRI Connectivity and advanced processing strategies
