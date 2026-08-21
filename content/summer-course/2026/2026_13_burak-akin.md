@@ -8,7 +8,7 @@ Course_date: August 4
 Time: 1:00 to 2:00 PM
 Location: FAES Room 4
 Topic: The use of peripheral measures in fMRI
-Video_link: 
+Video_link: https://youtu.be/gzDPP6IXazg
 PDF_link: 
 Speaker: Burak Akin
 
