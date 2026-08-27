@@ -22,6 +22,24 @@ make serve
 
 The main navigation is configured in `pelicanconf.py`.
 
+### Summer course lectures
+
+Create or update a summer-course Markdown file with the interactive generator:
+
+```bash
+python tools/generate_summer_course_markdown.py
+```
+
+Every prompt has a context-aware default where possible. Values can also be
+provided as command-line options; run the script with `--help` for the complete
+list. When a lecture file already exists, the generator displays a unified diff
+and requires confirmation before writing the changes.
+
+When an input PDF is supplied, the generator moves it into `content/pdf/YEAR/`,
+renames it to the existing `YEAR_NUMBER_speaker_name.pdf` convention, and fills
+in `PDF_link` automatically. Existing PDF assets are never overwritten. Use
+`--no-pdf-file` to skip the local PDF prompt in a fully scripted invocation.
+
 ## Staff publications
 
 Staff profiles can include a `Scholar:` metadata field pointing to a public
