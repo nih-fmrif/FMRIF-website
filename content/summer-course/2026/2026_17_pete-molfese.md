@@ -9,7 +9,7 @@ Time: 1:00 to 2:00 PM
 Location: FAES Room 4
 Topic: EEG and simultaneous EEG and fMRI
 Video_link: 
-PDF_link: 
+PDF_link: /pdf/2026/2026_17_pete_molfese.pdf
 Speaker: Pete Molfese
 
 EEG and simultaneous EEG and fMRI

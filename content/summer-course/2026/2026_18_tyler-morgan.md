@@ -9,7 +9,7 @@ Time: 1:00 to 2:00 PM
 Location: FAES Room 4
 Topic: Layer and Column fMRI
 Video_link: https://youtu.be/LAWQ1R2Bqco
-PDF_link: 
+PDF_link: /pdf/2026/2026_18_tyler_morgan.pdf
 Speaker: Tyler Morgan
 
 Layer and Column fMRI

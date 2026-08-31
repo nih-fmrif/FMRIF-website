@@ -9,7 +9,7 @@ Time: 1:00 to 2:00 PM
 Location: FAES Room 4
 Topic: Combining psychophysical measures and fMRI
 Video_link: 
-PDF_link: 
+PDF_link: /pdf/2026/2026_14_sharif_kronemer.pdf
 Speaker: Sharif Kronemer
 
 Combining psychophysical measures and fMRI

@@ -9,7 +9,7 @@ Time: 1:00 to 2:00 PM
 Location: FAES Room 4
 Topic: The use of peripheral measures in fMRI
 Video_link: https://youtu.be/gzDPP6IXazg
-PDF_link: 
+PDF_link: /pdf/2026/2026_13_burak_akin.pdf
 Speaker: Burak Akin
 
 The use of peripheral measures in fMRI

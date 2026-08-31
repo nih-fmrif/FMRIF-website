@@ -9,7 +9,7 @@ Time: 1:00 to 2:00 PM
 Location: NMR Conf. Room
 Topic: Physiology in the time series signal
 Video_link: https://youtu.be/U_FzqlifTOY
-PDF_link: 
+PDF_link: /pdf/2026/2026_15_burak_akin.pdf
 Speaker: Burak Akin
 
 Physiology in the time series signal
