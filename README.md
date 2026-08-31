@@ -40,6 +40,13 @@ renames it to the existing `YEAR_NUMBER_speaker_name.pdf` convention, and fills
 in `PDF_link` automatically. Existing PDF assets are never overwritten. Use
 `--no-pdf-file` to skip the local PDF prompt in a fully scripted invocation.
 
+Pass `--compress-pdf` to apply lossy, web-oriented compression with Ghostscript
+before the PDF is stored; color and grayscale images are downsampled to 160 PPI
+by default. Override that with `--pdf-dpi`, for example `--compress-pdf
+--pdf-dpi 180`. The compressed version is only retained when it is smaller than
+the input. Install the optional dependency on macOS with `brew install
+ghostscript`, and visually review compressed lecture decks before publishing.
+
 ## Staff publications
 
 Staff profiles can include a `Scholar:` metadata field pointing to a public

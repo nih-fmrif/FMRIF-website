@@ -1,10 +1,13 @@
 import io
+import subprocess
 import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 from tools.generate_summer_course_markdown import (
+    compress_pdf,
     inferred_day,
     main,
     pdf_filename,
@@ -173,6 +176,52 @@ class PdfInputTests(unittest.TestCase):
             self.assertTrue(source_pdf.exists())
             self.assertFalse(target_pdf.exists())
             self.assertEqual(markdown.read_text(encoding="utf-8"), "old\n")
+
+
+class PdfCompressionTests(unittest.TestCase):
+    def test_compression_keeps_smaller_output_and_removes_source(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            source = root / "incoming.pdf"
+            target = root / "pdf" / "2027_1_jane_doe.pdf"
+            source.write_bytes(b"%PDF-1.7\n" + b"x" * 1000)
+
+            def fake_run(command, **_kwargs):
+                output_arg = next(arg for arg in command if arg.startswith("-sOutputFile="))
+                Path(output_arg.split("=", 1)[1]).write_bytes(b"%PDF-1.7\nsmall")
+                return subprocess.CompletedProcess(command, 0, "", "")
+
+            with (
+                patch(
+                    "tools.generate_summer_course_markdown.shutil.which",
+                    side_effect=lambda name: "/mock/gs" if name == "gs" else None,
+                ),
+                patch(
+                    "tools.generate_summer_course_markdown.subprocess.run",
+                    side_effect=fake_run,
+                ),
+            ):
+                changed = compress_pdf(source, target, 160)
+
+            self.assertTrue(changed)
+            self.assertFalse(source.exists())
+            self.assertEqual(target.read_bytes(), b"%PDF-1.7\nsmall")
+
+    def test_missing_ghostscript_preserves_source(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            source = Path(temp_dir) / "incoming.pdf"
+            target = Path(temp_dir) / "output.pdf"
+            source.write_bytes(b"%PDF-1.7\nsource")
+
+            with patch(
+                "tools.generate_summer_course_markdown.shutil.which",
+                return_value=None,
+            ):
+                with self.assertRaises(SystemExit):
+                    compress_pdf(source, target, 160)
+
+            self.assertTrue(source.exists())
+            self.assertFalse(target.exists())
 
 
 if __name__ == "__main__":

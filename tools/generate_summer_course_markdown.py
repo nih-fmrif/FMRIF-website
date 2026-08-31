@@ -5,6 +5,8 @@ import argparse
 import difflib
 import re
 import shutil
+import subprocess
+import tempfile
 from datetime import date, datetime
 from pathlib import Path
 
@@ -176,11 +178,119 @@ def plan_pdf_move(source_value, pdf_dir, values):
     return source, target
 
 
-def move_pdf(move_plan):
+def pdf_page_count(path):
+    pdfinfo = shutil.which("pdfinfo")
+    if not pdfinfo:
+        return None
+    result = subprocess.run(
+        [pdfinfo, str(path)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode:
+        return None
+    match = re.search(r"^Pages:\s+(\d+)\s*$", result.stdout, re.MULTILINE)
+    return int(match.group(1)) if match else None
+
+
+def compress_pdf(source, target, dpi):
+    ghostscript = shutil.which("gs")
+    if not ghostscript:
+        raise SystemExit(
+            "PDF compression requires Ghostscript. Install it with "
+            "'brew install ghostscript'."
+        )
+
+    target.parent.mkdir(parents=True, exist_ok=True)
+    source_size = source.stat().st_size
+    source_pages = pdf_page_count(source)
+
+    with tempfile.TemporaryDirectory(prefix=".pdf-compress-", dir=target.parent) as temp_dir:
+        compressed = Path(temp_dir) / target.name
+        command = [
+            ghostscript,
+            "-dSAFER",
+            "-dBATCH",
+            "-dNOPAUSE",
+            "-dQUIET",
+            "-sDEVICE=pdfwrite",
+            "-dCompatibilityLevel=1.6",
+            "-dAutoRotatePages=/None",
+            "-dDetectDuplicateImages=true",
+            "-dCompressFonts=true",
+            "-dSubsetFonts=true",
+            "-dDownsampleColorImages=true",
+            "-dColorImageDownsampleType=/Bicubic",
+            f"-dColorImageResolution={dpi}",
+            "-dDownsampleGrayImages=true",
+            "-dGrayImageDownsampleType=/Bicubic",
+            f"-dGrayImageResolution={dpi}",
+            "-dDownsampleMonoImages=true",
+            "-dMonoImageResolution=300",
+            f"-sOutputFile={compressed}",
+            str(source),
+        ]
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode:
+            detail = (result.stderr or result.stdout).strip()
+            message = "Ghostscript could not compress the PDF."
+            if detail:
+                message += f"\n{detail}"
+            raise SystemExit(message)
+
+        if not compressed.is_file():
+            raise SystemExit("Ghostscript did not create a compressed PDF.")
+        with compressed.open("rb") as handle:
+            signature = handle.read(5)
+        if signature != b"%PDF-":
+            raise SystemExit("Ghostscript output is not a valid PDF.")
+
+        compressed_pages = pdf_page_count(compressed)
+        if (
+            source_pages is not None
+            and compressed_pages is not None
+            and source_pages != compressed_pages
+        ):
+            raise SystemExit(
+                "Compressed PDF page count changed "
+                f"from {source_pages} to {compressed_pages}; original preserved."
+            )
+
+        compressed_size = compressed.stat().st_size
+        if compressed_size >= source_size:
+            if source != target:
+                shutil.move(str(source), str(target))
+            print(
+                "Compression produced no savings; kept the original PDF "
+                f"({source_size:,} bytes)."
+            )
+            return False
+
+        compressed.replace(target)
+
+    if source != target:
+        source.unlink()
+    savings = 100 * (source_size - compressed_size) / source_size
+    print(
+        f"Compressed PDF: {source_size:,} -> {compressed_size:,} bytes "
+        f"({savings:.1f}% smaller)"
+    )
+    return True
+
+
+def move_pdf(move_plan, compress=False, dpi=160):
     if move_plan is None:
         return False
 
     source, target = move_plan
+    if compress:
+        return compress_pdf(source, target, dpi)
     if source == target:
         print(f"PDF already named correctly: {target}")
         return False
@@ -191,10 +301,12 @@ def move_pdf(move_plan):
     return True
 
 
-def write_course(path, content, input_fn=input):
+def write_course(path, content, input_fn=input, before_write=None):
     if path.exists():
         current = path.read_text(encoding="utf-8")
         if current == content:
+            if before_write:
+                before_write()
             print(f"No changes: {path}")
             return False
 
@@ -214,6 +326,8 @@ def write_course(path, content, input_fn=input):
             print("No changes written.")
             return False
 
+    if before_write:
+        before_write()
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
     print(f"Wrote {path}")
@@ -254,6 +368,17 @@ def build_parser():
         "--no-pdf-file",
         action="store_true",
         help="Do not prompt for a local PDF file",
+    )
+    parser.add_argument(
+        "--compress-pdf",
+        action="store_true",
+        help="Lossily compress the input PDF with Ghostscript before storing it",
+    )
+    parser.add_argument(
+        "--pdf-dpi",
+        type=positive_integer,
+        default=160,
+        help="Color and grayscale image resolution for --compress-pdf (default: 160)",
     )
     parser.add_argument("--speaker")
     parser.add_argument("--body")
@@ -361,11 +486,18 @@ def main(argv=None, input_fn=input):
     values, existing_path, move_plan = collect_values(args, input_fn=input_fn)
     path = proposed_path(args.content_dir, values, existing_path)
     content = render_course(values)
-    needs_course_write = not path.exists() or path.read_text(encoding="utf-8") != content
-    course_written = write_course(path, content, input_fn=input_fn)
-    if needs_course_write and not course_written:
-        return
-    move_pdf(move_plan)
+    if args.compress_pdf and move_plan is None:
+        raise SystemExit("--compress-pdf requires an input PDF file.")
+    write_course(
+        path,
+        content,
+        input_fn=input_fn,
+        before_write=lambda: move_pdf(
+            move_plan,
+            compress=args.compress_pdf,
+            dpi=args.pdf_dpi,
+        ),
+    )
 
 
 if __name__ == "__main__":
