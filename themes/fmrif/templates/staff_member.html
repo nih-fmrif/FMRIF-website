@@ -9,13 +9,14 @@
   <div class="profile-layout">
     {% if image %}<img class="profile-photo" src="{{ SITEURL }}/images/staff/{{ image }}" alt="{{ title }}">{% endif %}
     <div class="prose">
-      {% if email or phone or years or scholar or external_link %}
+      {% if email or phone or years or scholar or research_section or external_link %}
       <dl class="metadata-list">
         {% if email %}<dt>Email</dt><dd><a href="mailto:{{ email }}">{{ email }}</a></dd>{% endif %}
         {% if phone %}<dt>Phone</dt><dd>{{ phone }}</dd>{% endif %}
         {% if address %}<dt>Address</dt><dd>{{ address }}</dd>{% endif %}
         {% if years %}<dt>Years</dt><dd>{{ years }}</dd>{% endif %}
         {% if scholar %}<dt>Scholar</dt><dd><a href="{{ scholar }}">Google Scholar</a></dd>{% endif %}
+        {% if research_section %}<dt>Research Section</dt><dd><a href="{{ research_section }}">Section on Functional Imaging Methods</a></dd>{% endif %}
         {% if external_link %}<dt>Current profile</dt><dd><a href="{{ external_link }}">{{ external_link }}</a></dd>{% endif %}
       </dl>
       {% endif %}

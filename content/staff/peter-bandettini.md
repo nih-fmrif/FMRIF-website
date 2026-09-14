@@ -8,6 +8,7 @@ Address: National Institute of Mental Health, Building 10, Room 1D80B, 10 Center
 Image: pab.jpg
 Status: Active
 Scholar: https://scholar.google.com/citations?user=X9OdRnYAAAAJ&hl
+Research_section: https://fim.nimh.nih.gov/members/bandettini/
 
 Dr. Bandettini received his undergraduate degree in Physics from Marquette University in 1989, and his Ph.D. in Biophysics in 1994 at the Medical College of Wisconsin where he and colleague Eric Wong led the effort to carry out one of the first successful experiments in functional MRI using blood oxygen level dependent (BOLD) contrast. During this time, in collaboration with Andrej Jesmanowitz, he pioneered the use of correlation analysis for fMRI. It was in this publication that the term 'FMRI' was introduced. After completing his post doctoral training at the Massachusetts General Hospital NMR Center in 1996, he returned to the Medical College of Wisconsin as an Assistant Professor. He was recruited to the NIH Intramural Program in 1999, where he is currently Director of the Functional MRI Facility and Chief of the Section on Functional Imaging Methods at the National Institute of Mental Health. In 2014, established the Center for Multimodal Neuroimaging, the Machine Learning team, and a Data Sharing team - all in NIMH.
 
