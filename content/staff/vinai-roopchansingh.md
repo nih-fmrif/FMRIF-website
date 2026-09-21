@@ -7,6 +7,6 @@ Phone: 301-594-9197
 Image: vinai_roopchansingh_web2.png
 Status: Active
 Scholar: https://scholar.google.com/citations?hl=en&user=kvCvgiIAAAAJ
-Other URLs: https://github.com/roopchansinghv
+Other_URLs: https://github.com/roopchansinghv
 
 Vinai Roopchansingh is a Staff Scientist with the Functional MRI Facility.
