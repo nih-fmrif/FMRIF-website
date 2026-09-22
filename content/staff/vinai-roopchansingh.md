@@ -4,7 +4,7 @@ Last_name: Roopchansingh
 Position: Staff Scientist
 Email: vinai.roopchansingh@nih.gov
 Phone: 301-594-9197
-Image: vinai_roopchansingh_web2.png
+Image: vr.png
 Status: Active
 Scholar: https://scholar.google.com/citations?hl=en&user=kvCvgiIAAAAJ
 Other_URLs: https://github.com/roopchansinghv
