@@ -986,20 +986,18 @@ img {
 }
 
 .publication-rolodex {
-  position: relative;
-  display: block;
-  min-height: 560px;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  min-height: 750px;
   color: var(--ink);
   text-decoration: none;
 }
 
 .rolodex-card {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
   min-height: 138px;
-  display: grid;
+  display: none;
+  order: 0;
   align-content: start;
   gap: 0.35rem;
   padding: 1rem;
@@ -1008,24 +1006,34 @@ img {
   border-radius: 6px;
   background: var(--panel);
   box-shadow: 0 12px 30px rgba(18, 49, 59, 0.08);
-  opacity: 0;
-  transform: translateY(10px) rotateX(-8deg);
-  transition: opacity 300ms ease, transform 300ms ease;
-  pointer-events: none;
 }
 
 .rolodex-card.is-active {
-  opacity: 1;
-  transform: translateY(0) rotateX(0);
-  pointer-events: auto;
+  display: grid;
+  animation: rolodex-enter 300ms ease;
+}
+
+@keyframes rolodex-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) rotateX(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
 }
 
 .rolodex-card.is-secondary {
-  top: 190px;
+  order: 1;
 }
 
 .rolodex-card.is-tertiary {
-  top: 380px;
+  order: 2;
+}
+
+.rolodex-card.is-quaternary {
+  order: 3;
 }
 
 .rolodex-card h3,
