@@ -151,7 +151,7 @@
   (() => {
     const cards = Array.from(document.querySelectorAll('.publication-rolodex .rolodex-card'));
     const timer = document.querySelector('.rolodex-timer');
-    if (cards.length < 3) return;
+    if (cards.length < 4) return;
     const intervalMs = 8000;
     let timerFrame = null;
     const shuffled = cards
@@ -174,15 +174,16 @@
     };
 
     const showSet = () => {
-      cards.forEach((card) => card.classList.remove('is-active', 'is-secondary', 'is-tertiary'));
+      cards.forEach((card) => card.classList.remove('is-active', 'is-secondary', 'is-tertiary', 'is-quaternary'));
       shuffled[index % shuffled.length].classList.add('is-active');
       shuffled[(index + 1) % shuffled.length].classList.add('is-active', 'is-secondary');
       shuffled[(index + 2) % shuffled.length].classList.add('is-active', 'is-tertiary');
+      shuffled[(index + 3) % shuffled.length].classList.add('is-active', 'is-quaternary');
       restartTimer();
     };
     showSet();
     setInterval(() => {
-      index = (index + 3) % shuffled.length;
+      index = (index + 4) % shuffled.length;
       showSet();
     }, intervalMs);
   })();
